@@ -35,6 +35,18 @@ export const manuales  = {
             "imagen" : "Git_logo_PNG2.png",
             "categoria" : "3",
             "precio" : 25,
+        },
+        {
+            "materia" : "SQL",
+            "url" : 'https://docs.google.com/presentation/d/19ttx2_dnJ03UezVY-OUa4_YW-nCgWD-ti76Sa_qfLac/edit?usp=sharing',
+            "imagen" : "sql.svg",
+            "categoria" : "2",
+            "precio" : 10,
+        },
+        {
+            "materia" : "Visual Studio Code",
+            "categoria" : "3",
+            "precio" : 10,
         }
 
 
