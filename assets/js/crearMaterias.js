@@ -11,7 +11,7 @@ manuales.materias.forEach(materia => {
   card.classList.add("materias"); // añadido para que funcione el tema de los botones de categorias
   const img = document.createElement("img");
   img.classList.add("card-img-top");
-  img.src = `img/${materia.imagen}`;
+  img.src = `assets/img/${materia.imagen}`;
   img.alt = materia.materia;
 
   const body = document.createElement("div");
