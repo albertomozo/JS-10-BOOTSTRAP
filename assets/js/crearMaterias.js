@@ -1,3 +1,5 @@
+export function  listaMaterias  (manuales,categorias){
+
 const cardsContainer = document.getElementById("cursos");
 
 manuales.materias.forEach(materia => {
@@ -41,3 +43,4 @@ manuales.materias.forEach(materia => {
   card.appendChild(buttonurl);
   cardsContainer.appendChild(card);
 });
+}
