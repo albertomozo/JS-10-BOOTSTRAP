@@ -1,4 +1,4 @@
-const manuales  = {
+export const manuales  = {
     materias : [
         {
             "materia" : "HTML",
@@ -43,7 +43,7 @@ const manuales  = {
     
 }
 
-const   categorias = [
+export const   categorias = [
         {
             id : 0,
             nombre : "Todos",
@@ -70,3 +70,4 @@ const   categorias = [
             icono :""
         }
     ]
+
