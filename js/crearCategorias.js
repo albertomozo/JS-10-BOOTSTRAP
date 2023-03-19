@@ -29,6 +29,7 @@ categorias.forEach(categoria=>{
     datosA.setAttributeNode(atrib);
     atrib = document.createAttribute('aria-current');
     atrib.value = 'page';
+    datosA.id = `btn_${categoria.nombre}` // añadido para que funcione el listener
     datosA.setAttributeNode(atrib);
     atrib = document.createAttribute('href');
     atrib.value = '#';
