@@ -5,6 +5,8 @@ manuales.materias.forEach(materia => {
   card.classList.add("card");
   card.style.width = "18rem";
 
+  card.classList.add(categorias[materia.categoria].nombre); // añadido para que funcione el tema de los botones de categorias
+  card.classList.add("materias"); // añadido para que funcione el tema de los botones de categorias
   const img = document.createElement("img");
   img.classList.add("card-img-top");
   img.src = `img/${materia.imagen}`;
