@@ -47,7 +47,14 @@ export const manuales  = {
             "materia" : "Visual Studio Code",
             "categoria" : "3",
             "precio" : 10,
-        }
+        },
+        {
+            "materia" : "AIRTABLE",
+            "url" : 'https://docs.google.com/presentation/d/1Vy7pSE19KBPgvintDCYRA7JJB-5OWXOvpMkS3CSZ-lg/edit?usp=sharing',
+            "imagen" : "airtable_logo_icon_169628.png",
+            "categoria" : "4",
+            "precio" : 12,
+        },
 
 
 
