@@ -19,6 +19,10 @@ manuales.materias.forEach(materia => {
 
   const title = document.createElement("h5");
   title.classList.add("card-title");
+  title.classList.add("text-center");
+  title.classList.add("bg-gradient");
+  title.classList.add("bg-secondary");
+
   title.textContent = materia.materia;
 
   const text = document.createElement("p");
@@ -30,10 +34,15 @@ manuales.materias.forEach(materia => {
   button.href = materia.url;
   button.textContent = "Comprar";
 
-  const buttonurl = document.createElement("a");
+
+ 
+  let buttonurl = document.createElement("a");
   buttonurl.classList.add("btn", "btn-primary");
   buttonurl.href = materia.url;
-  buttonurl.textContent = "Ver detalle";
+  buttonurl.target = "_blank";
+  buttonurl.innerHTML = tipoCurso(materia) + " Ver detalle";
+  /* obtencion del tipo de curso */
+
 
   body.appendChild(title);
   body.appendChild(text);
@@ -43,4 +52,21 @@ manuales.materias.forEach(materia => {
   card.appendChild(buttonurl);
   cardsContainer.appendChild(card);
 });
+}
+
+function tipoCurso(materia){
+  let tipoT="";
+  switch (materia.tipo)
+  {
+      case 'drive':
+          tipoT = 'googledrive.svg';
+          break;
+      case 'pdf':
+            tipoT = 'adobeacrobatreader.svg';
+            break;
+      default :
+          tipoT = 'icons8-bloc-50.png';
+  }
+  return `<img src="assets/img/${tipoT}" width="20px"></img>`;
+ 
 }
