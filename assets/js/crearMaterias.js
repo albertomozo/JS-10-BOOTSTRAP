@@ -1,8 +1,7 @@
 export function  listaMaterias  (manuales,categorias){
 
 const cardsContainer = document.getElementById("cursos");
-
-manuales.materias.forEach(materia => {
+manuales.forEach(materia => {
   const card = document.createElement("div");
   card.classList.add("card");
   card.style.width = "18rem";

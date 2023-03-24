@@ -1,21 +1,19 @@
-export function leerDatos(datos)
-{
-    console.log('FETCH :  ' + datos)
-    fetch(datos)
-    .then(response => {    
-    if (response.ok)
-        return response.text()
-        else
-        throw new Error(response.status);
-    })
-    .then(data => {
-        // sentencias a ejecutar
-
-        return  JSON.parse(data);
-        //console.log("Datos: " + data);
-    })
-    .catch(err => {
-        console.error("ERROR: ", err.message)
-    });
-}
+export function leerDatos(datos) {
+    return fetch(datos)
+      .then(response => {    
+        if (response.ok) {
+          return response.text();
+        } else {
+          throw new Error(response.status);
+        }
+      })
+      .then(data => {
+        console.log("Datos: " + data);
+        return data;
+      })
+      .catch(err => {
+        console.error("ERROR: ", err.message);
+      });
+  }
+  
   
