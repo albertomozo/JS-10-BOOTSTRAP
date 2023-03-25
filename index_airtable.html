@@ -1,0 +1,16 @@
+<script>
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer pat9QWD70newkgBnZ.2cdb5fa54f63fccbffb0a80b417cba8260900248663842b98ecd79f37e674d6f");
+    myHeaders.append("Cookie", "brw=brwKH7H16weO2bQ0G; AWSALB=WJgurUkK3eQMg3uPjcTyVaROX7212wCvryuryKTRFG/r00ekSGoFrKBuyjh2xTXqgy5NzR7l7AhwmHm7M5FnKm8JrWyAY8QKSlQwCAQmDU9lqV8M+Bj3FOvCjP+y; AWSALBCORS=WJgurUkK3eQMg3uPjcTyVaROX7212wCvryuryKTRFG/r00ekSGoFrKBuyjh2xTXqgy5NzR7l7AhwmHm7M5FnKm8JrWyAY8QKSlQwCAQmDU9lqV8M+Bj3FOvCjP+y");
+    
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
+    };
+    
+    fetch("https://api.airtable.com/v0/appQcGpgIhFbgaxQ7/cursos?maxRecords=3&view=Grid%20view", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+      </script>
