@@ -1,0 +1,1 @@
+// fichero js gpara acceder a consola google
