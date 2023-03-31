@@ -40,8 +40,8 @@ manuales.materias.forEach(materia => {
   buttonurl.classList.add("btn", "btn-primary");
   buttonurl.href = materia.url;
   buttonurl.target = "_blank";
-  buttonurl.innerHTML = tipoCurso(materia) + " Ver detalle";
-  /* obtencion del tipo de curso */
+  buttonurl.innerHTML = tipoCurso(materia) + " Ver Material";
+  
 
 
   body.appendChild(title);
@@ -49,7 +49,11 @@ manuales.materias.forEach(materia => {
   card.appendChild(img);
   card.appendChild(body);
   card.appendChild(button);
-  card.appendChild(buttonurl);
+  // validar enlace, si no existe valor no mosteramos boton
+  console.log(materia.url);
+  if (materia.url != undefined){
+    card.appendChild(buttonurl);
+  }
   cardsContainer.appendChild(card);
 });
 }
