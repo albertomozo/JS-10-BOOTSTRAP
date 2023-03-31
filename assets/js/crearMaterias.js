@@ -1,76 +1,80 @@
 export function  listaMaterias  (manuales,categorias){
 
-const cardsContainer = document.getElementById("cursos");
+  const cardsContainer = document.getElementById("cursos");
 
-crearModal();
+  crearModal();
 
-manuales.materias.forEach(materia => {
-  const card = document.createElement("div");
-  card.classList.add("card");
-  card.style.width = "18rem";
+  manuales.materias.forEach(materia => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.style.width = "18rem";
 
-  card.classList.add(categorias[materia.categoria].nombre); // añadido para que funcione el tema de los botones de categorias
-  card.classList.add("materias"); // añadido para que funcione el tema de los botones de categorias
-  const img = document.createElement("img");
-  img.classList.add("card-img-top");
-  img.src = `assets/img/${materia.imagen}`;
-  img.alt = materia.materia;
+    card.classList.add(categorias[materia.categoria].nombre); // añadido para que funcione el tema de los botones de categorias
+    card.classList.add("materias"); // añadido para que funcione el tema de los botones de categorias
+    const img = document.createElement("img");
+    img.classList.add("card-img-top");
+    img.src = `assets/img/${materia.imagen}`;
+    img.alt = materia.materia;
 
-  const body = document.createElement("div");
-  body.classList.add("card-body");
+    const body = document.createElement("div");
+    body.classList.add("card-body");
 
-  const title = document.createElement("h5");
-  title.classList.add("card-title");
-  title.classList.add("text-center");
-  title.classList.add("bg-gradient");
-  title.classList.add("bg-secondary");
+    const title = document.createElement("h5");
+    title.classList.add("card-title");
+    title.classList.add("text-center");
+    title.classList.add("bg-gradient");
+    title.classList.add("bg-secondary");
 
-  title.textContent = materia.materia;
+    title.textContent = materia.materia;
 
-  const text = document.createElement("p");
-  text.classList.add("card-text");
-  text.textContent = `Precio: ${materia.precio}€`;
+    const text = document.createElement("p");
+    text.classList.add("card-text");
+    text.textContent = `Precio: ${materia.precio}€`;
 
-  // boton para lanzar la modal 
-/* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    boton en crear_categorias
-  </button> */
+    // boton para lanzar la modal 
+  /* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      boton en crear_categorias
+    </button> */
+    
+    const buttonmodal = document.createElement("button");
+    buttonmodal.classList.add("btn", "btn-primary", "btn-modal");
+  /*   buttonmodal.dataset.bs-toggle = "modal";
+    buttonmodal.dataset.bs-target = "#exampleModal"; */
+    buttonmodal.setAttribute("data-bs-toggle","modal");
+    buttonmodal.setAttribute("data-bs-target","#exampleModal");
+    buttonmodal.setAttribute("data-datos",`{"nombre": "${materia.materia}" , "img" : "${materia.imagen}"}`);
+    buttonmodal.id=`mod-${materia.id}`; 
+
+    buttonmodal.textContent = "Ver Detalle";
+
+    const button = document.createElement("a");
+    button.classList.add("btn", "btn-primary");
+    button.href = materia.url;
+    button.textContent = "Comprar";
   
-  const buttonmodal = document.createElement("button");
-  buttonmodal.classList.add("btn", "btn-primary");
-/*   buttonmodal.dataset.bs-toggle = "modal";
-  buttonmodal.dataset.bs-target = "#exampleModal"; */
-  buttonmodal.setAttribute("data-bs-toggle","modal");
-  buttonmodal.setAttribute("data-bs-target","#exampleModal");
-
-  buttonmodal.textContent = "Ver Detalle";
-
-  const button = document.createElement("a");
-  button.classList.add("btn", "btn-primary");
-  button.href = materia.url;
-  button.textContent = "Comprar";
- 
-  let buttonurl = document.createElement("a");
-  buttonurl.classList.add("btn", "btn-primary");
-  buttonurl.href = materia.url;
-  buttonurl.target = "_blank";
-  buttonurl.innerHTML = tipoCurso(materia) + " Ver Material";
-  
+    let buttonurl = document.createElement("a");
+    buttonurl.classList.add("btn", "btn-primary");
+    buttonurl.href = materia.url;
+    buttonurl.target = "_blank";
+    buttonurl.innerHTML = tipoCurso(materia) + " Ver Material";
+    
 
 
-  body.appendChild(title);
-  body.appendChild(text);
-  card.appendChild(img);
-  card.appendChild(body);
-  card.appendChild(buttonmodal);
-  card.appendChild(button);
-  // validar enlace, si no existe valor no mosteramos boton
-  console.log(materia.url);
-  if (materia.url != undefined){
-    card.appendChild(buttonurl);
-  }
-  cardsContainer.appendChild(card);
-});
+    body.appendChild(title);
+    body.appendChild(text);
+    card.appendChild(img);
+    card.appendChild(body);
+    card.appendChild(buttonmodal);
+    card.appendChild(button);
+    // validar enlace, si no existe valor no mosteramos boton
+    console.log(materia.url);
+    if (materia.url != undefined){
+      card.appendChild(buttonurl);
+    }
+    cardsContainer.appendChild(card);
+  });
+
+  listeners();
 }
 
 function tipoCurso(materia){
@@ -98,7 +102,7 @@ function crearModal() {
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">HTML</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">html</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -135,4 +139,24 @@ function crearModal() {
   </div>`;
   document.getElementsByTagName("body")[0].insertAdjacentHTML("afterbegin",modalHtml);
 
+}
+
+function listeners()
+{
+  const modal = document.querySelector("#exampleModal");
+const dialog = modal.querySelector(".modal-dialog");
+const content = dialog.querySelector(".modal-content");
+
+const botones = document.querySelectorAll(".btn-modal");
+
+botones.forEach((boton) => {
+  boton.addEventListener("click", () => {
+    console.log(boton);
+    const datos = JSON.parse(boton.getAttribute("data-datos"));
+    const titulo = content.querySelector(".modal-title");
+    const cuerpo = content.querySelector(".modal-body");
+    titulo.innerText = datos.nombre;
+    cuerpo.innerText = datos.img;
+  });
+});
 }
