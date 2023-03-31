@@ -54,7 +54,7 @@ export const manuales  = {
             "imagen" : "airtable_logo_icon_169628.png",
             "categoria" : "4",
             "precio" : 12,
-        },
+        }
 
 
 
