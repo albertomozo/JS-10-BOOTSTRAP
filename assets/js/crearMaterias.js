@@ -37,13 +37,15 @@ export function  listaMaterias  (manuales,categorias){
     </button> */
     
     const buttonmodal = document.createElement("button");
-    buttonmodal.classList.add("btn", "btn-primary", "btn-modal");
+    buttonmodal.classList.add("btn", "btn-primary", "btn-modal"); // clase btn-modal sirve para crear los listeners
   /*   buttonmodal.dataset.bs-toggle = "modal";
     buttonmodal.dataset.bs-target = "#exampleModal"; */
     buttonmodal.setAttribute("data-bs-toggle","modal");
     buttonmodal.setAttribute("data-bs-target","#exampleModal");
     buttonmodal.setAttribute("data-datos",`{"nombre": "${materia.materia}" , "img" : "${materia.imagen}"}`);
-    buttonmodal.id=`mod-${materia.id}`; 
+    buttonmodal.setAttribute("data-categoria",`${categorias[materia.categoria].nombre}`);
+    
+    buttonmodal.id=`mod-${materia.materia}`; 
 
     buttonmodal.textContent = "Ver Detalle";
 
@@ -62,7 +64,10 @@ export function  listaMaterias  (manuales,categorias){
 
     body.appendChild(title);
     body.appendChild(text);
-    card.appendChild(img);
+    // valoidamos si mno hay imagen. Podriamos tener una por defecto para incluir en estos casos
+    if (materia.imagen != undefined && materia.url != ''){
+      card.appendChild(img);
+    }
     card.appendChild(body);
     card.appendChild(buttonmodal);
     card.appendChild(button);
@@ -74,7 +79,7 @@ export function  listaMaterias  (manuales,categorias){
     cardsContainer.appendChild(card);
   });
 
-  listeners();
+  listeners(manuales);
 }
 
 function tipoCurso(materia){
@@ -141,7 +146,7 @@ function crearModal() {
 
 }
 
-function listeners()
+function listeners(manuales)
 {
   const modal = document.querySelector("#exampleModal");
 const dialog = modal.querySelector(".modal-dialog");
@@ -155,8 +160,23 @@ botones.forEach((boton) => {
     const datos = JSON.parse(boton.getAttribute("data-datos"));
     const titulo = content.querySelector(".modal-title");
     const cuerpo = content.querySelector(".modal-body");
-    titulo.innerText = datos.nombre;
-    cuerpo.innerText = datos.img;
+
+    const materiaNombre = boton.id.split('-').pop();
+    console.log(materiaNombre);
+    // buscar esta materia en el objeto materias
+    console.log(manuales);
+    const result = manuales.materias.filter(manual => manual.materia == materiaNombre);
+    console.log(result); 
+
+    titulo.innerText = result[0].materia;
+    console.log(cuerpo.children[0].children[0].children[0].children[0]);
+
+    cuerpo.children[0].children[0].children[0].children[0].setAttribute('src',`./assets/img/${result[0].imagen}` );
+    console.log(boton);
+    cuerpo.children[0].children[0].children[1].children[0].children[0].innerText=boton.getAttribute('data-categoria');
+    console.log(`💰 ${result[0].precio}`);
+    cuerpo.children[0].children[0].children[1].children[0].children[1].innerText=result[0].precio;
+    cuerpo.children[0].children[0].children[1].children[0].children[2].innerText=result[0].url;
   });
 });
 }
