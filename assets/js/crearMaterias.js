@@ -1,3 +1,5 @@
+import {categoriaNombre } from './crearCategorias.js';
+
 export function  listaMaterias  (manuales,categorias){
 
   const cardsContainer = document.getElementById("cursos");
@@ -29,7 +31,15 @@ export function  listaMaterias  (manuales,categorias){
 
     const text = document.createElement("p");
     text.classList.add("card-text");
-    text.textContent = `Precio: ${materia.precio}€`;
+    // compruebo si hay descuento
+    console.log(materia.materia ,  materia.oferta)
+    if (materia.oferta != null && materia.oferta !== undefined) { 
+      text.textContent = `Precio rebajado ${materia.oferta} % : Antes ${materia.precio} € Ahora ${materia.precio - (materia.precio * materia.oferta/100)}€`;
+      text.style.border = "1px solid red";
+      text.classList.add("oferta");
+    } else {     
+      text.textContent = `Precio: ${materia.precio}€`;
+    }
 
     // boton para lanzar la modal 
   /* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -64,7 +74,7 @@ export function  listaMaterias  (manuales,categorias){
 
     body.appendChild(title);
     body.appendChild(text);
-    // valoidamos si mno hay imagen. Podriamos tener una por defecto para incluir en estos casos
+    // validamos si mno hay imagen. Podriamos tener una por defecto para incluir en estos casos
     if (materia.imagen != undefined && materia.url != ''){
       card.appendChild(img);
     }
@@ -80,6 +90,35 @@ export function  listaMaterias  (manuales,categorias){
   });
 
   listeners(manuales);
+}
+
+export function itinerarios(manuales,categorias){
+  let resultado = [];
+  console.log(`📘 Itineracios`)
+  categorias.forEach(item => {
+    if (item.id >0){
+      console.log(item.nombre);
+      console.log(manuales);
+      manuales.materias.filter(manual => {
+        let curso = {};
+        if (manual.categoria == item.id) {
+          // obtener nombre categoria
+          
+
+          curso.categoria = item.id;
+          curso.categoriaNombre = categoriaNombre(item.id,categorias);
+          curso.materia = manual.materia;
+          curso.precio = manual.precio;
+          resultado.push(curso);
+
+          console.log(`..... ${manual.materia}`);
+          
+        }
+      });
+    }   
+  });
+  return resultado;
+
 }
 
 function tipoCurso(materia){

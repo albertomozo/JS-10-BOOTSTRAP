@@ -35,6 +35,7 @@ export const manuales  = {
             "imagen" : "Git_logo_PNG2.png",
             "categoria" : "3",
             "precio" : 25,
+            "oferta" : 20
         },
         {
             "materia" : "SQL",
@@ -42,6 +43,7 @@ export const manuales  = {
             "imagen" : "sql.svg",
             "categoria" : "2",
             "precio" : 10,
+            "oferta" : 50
         },
         {
             "materia" : "Visual Studio Code",
@@ -54,6 +56,13 @@ export const manuales  = {
             "imagen" : "airtable_logo_icon_169628.png",
             "categoria" : "4",
             "precio" : 12,
+        },
+        {
+            "materia" : "Programación",
+            "url" : 'https://docs.google.com/presentation/d/1aROfBbbREKcBomYTxCqR41YfFoJGpfrRsuevn5tVs7o/edit#slide=id.p',
+            "imagen" : "programacion.png",
+            "categoria" : "5",
+            "precio" : 1,
         }
 
 
@@ -70,7 +79,7 @@ export const   categorias = [
         },
         {
             id : 1,
-            nombre : "Front",
+            nombre : "FRONTEND",
             icono :""
         },
         {
@@ -86,6 +95,11 @@ export const   categorias = [
         {
             id : 4,
             nombre : "Nocode",
+            icono :""
+        },
+        {
+            id : 5,
+            nombre : "Informatica",
             icono :""
         }
     ]

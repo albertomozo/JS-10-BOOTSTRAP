@@ -42,3 +42,12 @@ export function barraCategorias(categorias){
     console.log('entro');
 
 }
+
+export function categoriaNombre(id,categorias){
+    const categoriaEncontrada = categorias.find(item => item.id === id);
+    if (categoriaEncontrada) {
+        return categoriaEncontrada.nombre;
+    } else {
+        return "Categoría no encontrada"; // O puedes manejarlo de otra manera según tus necesidades
+    }
+}
