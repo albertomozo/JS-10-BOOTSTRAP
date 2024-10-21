@@ -1,4 +1,4 @@
-export const manuales  = {
+/* export const manuales  = {
     materias : [
         {
             "materia" : "HTML",
@@ -69,7 +69,36 @@ export const manuales  = {
 
     ]
     
-}
+} */
+
+    /* export const manuales = {
+        materias: []
+    };
+    
+    // Función que obtiene los datos y resuelve cuando los asigna a manuales.materias
+    export async function fetchMaterias() {
+        try {
+            const response = await fetch("https://notion-js-sdk-vercel.vercel.app/cursosweb");
+            const result = await response.json();
+            manuales.materias = result;
+            console.log('Materias fetched:', manuales.materias);  // Imprime los datos cuando están listos
+            return manuales.materias;  // Retorna los datos una vez obtenidos
+        } catch (err) {
+            console.error("Error fetching materias:", err);
+            return null;
+        }
+    }
+    
+    // Llamar a la función y realizar operaciones cuando los datos estén disponibles
+    fetchMaterias().then((materias) => {
+        if (materias) {
+            console.log("Datos de materias disponibles para usar:", materias);
+            // Aquí puedes continuar con otras operaciones que dependan de `manuales.materias`
+        } else {
+            console.log("No se pudieron obtener los datos.");
+        }
+    });
+     */
 
 export const   categorias = [
         {
@@ -78,29 +107,72 @@ export const   categorias = [
             icono :""
         },
         {
-            id : 1,
+            id : "f5499c02-7da1-4787-8541-5d71d47eeba8",
             nombre : "FRONTEND",
             icono :""
         },
         {
-            id : 2,
+            id : "983fb75f-a660-4312-886f-6bfbae8cb5ac",
             nombre : "Back",
             icono :""
         },
         {
-            id : 3,
+            id : "a6228e5e-caf1-430f-8795-ee0ea66c74f4",
             nombre : "Herramientas",
             icono :""
         },
         {
-            id : 4,
+            id : "2164d385-55d3-4cc3-b5ac-72c181ca05e7",
             nombre : "Nocode",
             icono :""
         },
         {
-            id : 5,
+            id : "104c651c-400b-80b3-b7bd-e239033ab422",
             nombre : "Informatica",
+            icono :""
+        },
+        {
+            id : "103c651c-400b-8044-85a2-d62bafc5eeb8",
+            nombre : "DevOps",
+            icono :""
+        },
+        {
+            id : "103c651c-400b-803d-95ce-c7f2f091240e",
+            nombre : "OTROS",
             icono :""
         }
     ]
+    /* [
+        {
+          "pageId": "104c651c-400b-80b3-b7bd-e239033ab422",
+          "name": "INFORMATICA"
+        },
+        {
+          "pageId": "103c651c-400b-8044-85a2-d62bafc5eeb8",
+          "name": "DEVOPS"
+        },
+        {
+          "pageId": "103c651c-400b-803d-95ce-c7f2f091240e",
+          "name": "OTROS"
+        },
+        {
+          "pageId": "2164d385-55d3-4cc3-b5ac-72c181ca05e7",
+          "name": "NOCODE"
+        },
+        {
+          "pageId": "983fb75f-a660-4312-886f-6bfbae8cb5ac",
+          "name": "BACK"
+        },
+        {
+          "pageId": "a6228e5e-caf1-430f-8795-ee0ea66c74f4",
+          "name": "HERRAMIENTA"
+        },
+        {
+          "pageId": "f5499c02-7da1-4787-8541-5d71d47eeba8",
+          "name": "FRONT"
+        }
+      ] */
+
+    
+        
 

@@ -1,21 +1,31 @@
-import {categoriaNombre } from './crearCategorias.js';
+import {categoriaNombre,catNom } from './crearCategorias.js';
 
 export function  listaMaterias  (manuales,categorias){
 
   const cardsContainer = document.getElementById("cursos");
 
   crearModal();
-
+  console.log('📗 '+ manuales);
+  console.log('📗 '+ manuales.materias.length);
   manuales.materias.forEach(materia => {
+    console.log('📗 '+ materia + '#' + materia.categoria );
     const card = document.createElement("div");
     card.classList.add("card");
     card.style.width = "18rem";
-
-    card.classList.add(categorias[materia.categoria].nombre); // añadido para que funcione el tema de los botones de categorias
+    const categoriaNombre = catNom(materia.categoria,categorias);
+    //card.classList.add(categorias[materia.categoria].nombre); // añadido para que funcione el tema de los botones de categorias
+    card.classList.add(categoriaNombre); 
     card.classList.add("materias"); // añadido para que funcione el tema de los botones de categorias
     const img = document.createElement("img");
+     // validaciones 
+
+     /* let materiaImagen;
+     if (materia.imagen == 'pordefecto') {materiaImagen="./assets/img/icons8-sin-galeria-de-imagenes-100.png" } else {materiaImagen=materia.imagen;} */
+     let materiaImagen = materia.imagen === 'pordefecto' 
+  ? "./assets/img/icons8-sin-galeria-de-imagenes-100.png" 
+  : materia.imagen;
     img.classList.add("card-img-top");
-    img.src = `assets/img/${materia.imagen}`;
+    img.src = materiaImagen;
     img.alt = materia.materia;
 
     const body = document.createElement("div");
@@ -41,6 +51,7 @@ export function  listaMaterias  (manuales,categorias){
       text.textContent = `Precio: ${materia.precio}€`;
     }
 
+   
     // boton para lanzar la modal 
   /* <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
       boton en crear_categorias
@@ -53,7 +64,7 @@ export function  listaMaterias  (manuales,categorias){
     buttonmodal.setAttribute("data-bs-toggle","modal");
     buttonmodal.setAttribute("data-bs-target","#exampleModal");
     buttonmodal.setAttribute("data-datos",`{"nombre": "${materia.materia}" , "img" : "${materia.imagen}"}`);
-    buttonmodal.setAttribute("data-categoria",`${categorias[materia.categoria].nombre}`);
+    buttonmodal.setAttribute("data-categoria",`${categoriaNombre}`);
     
     buttonmodal.id=`mod-${materia.materia}`; 
 
@@ -74,7 +85,7 @@ export function  listaMaterias  (manuales,categorias){
 
     body.appendChild(title);
     body.appendChild(text);
-    // validamos si mno hay imagen. Podriamos tener una por defecto para incluir en estos casos
+    // validamos si no hay imagen. Podriamos tener una por defecto para incluir en estos casos
     if (materia.imagen != undefined && materia.url != ''){
       card.appendChild(img);
     }
@@ -219,3 +230,5 @@ botones.forEach((boton) => {
   });
 });
 }
+
+

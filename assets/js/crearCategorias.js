@@ -43,11 +43,21 @@ export function barraCategorias(categorias){
 
 }
 
-export function categoriaNombre(id,categorias){
+/* export function categoriaNombre(id,categorias){
     const categoriaEncontrada = categorias.find(item => item.id === id);
     if (categoriaEncontrada) {
         return categoriaEncontrada.nombre;
     } else {
         return "Categoría no encontrada"; // O puedes manejarlo de otra manera según tus necesidades
     }
+} */
+
+export  function categoriaNombre(id,categorias){
+    const categoriaE = categorias.find(cat => cat.id === id);
+    return categoriaE ? categoriaE.nombre : "Categoría no encontrada";
+}
+
+export  function catNom(id,categorias){
+    const categoriaE = categorias.find(cat => cat.id === id);
+    return categoriaE ? categoriaE.nombre : "Categoría no encontrada";
 }
