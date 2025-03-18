@@ -63,6 +63,13 @@
             "imagen" : "programacion.png",
             "categoria" : "5",
             "precio" : 1,
+        },
+        {
+            "materia" : "Programación",
+            "url" : 'https://docs.google.com/presentation/d/1aROfBbbREKcBomYTxCqR41YfFoJGpfrRsuevn5tVs7o/edit#slide=id.p',
+            "imagen" : "programacion.png",
+            "categoria" : "5",
+            "precio" : 1,
         }
 
 
